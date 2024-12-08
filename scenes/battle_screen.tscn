@@ -1,0 +1,136 @@
+[gd_scene load_steps=12 format=3 uid="uid://cyb2cuyf1byvi"]
+
+[ext_resource type="Script" path="res://scripts/battle_screen.gd" id="1_0y300"]
+[ext_resource type="Texture2D" uid="uid://didt8vsp6q01m" path="res://assets/battlebg.png" id="2_g33ej"]
+[ext_resource type="Texture2D" uid="uid://1wt7j5sa8qxm" path="res://assets/atk.png" id="3_xlpmp"]
+[ext_resource type="Texture2D" uid="uid://boduh2lr432gs" path="res://assets/def.png" id="4_gtnnp"]
+[ext_resource type="Texture2D" uid="uid://bja4v2ywvj8pw" path="res://assets/spec.png" id="5_vtq0p"]
+[ext_resource type="Texture2D" uid="uid://cig7c2p42kl3f" path="res://assets/chrg.png" id="6_dct41"]
+[ext_resource type="Texture2D" uid="uid://02htnu1g6bw5" path="res://assets/go.png" id="7_au035"]
+[ext_resource type="AudioStream" uid="uid://cx4h1havvy38i" path="res://assets/epic-battle-francisco-samuel-123469.mp3" id="8_xre52"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lxf1f"]
+bg_color = Color(0.479422, 0.160399, 0.103853, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ftye3"]
+bg_color = Color(0.184392, 0.353507, 0.087274, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xfw2m"]
+font_size = 40
+font_color = Color(1, 0.934167, 0.21, 1)
+shadow_size = 4
+shadow_color = Color(0.08, 0.08, 0.08, 0.654902)
+
+[node name="battle_screen" type="Node2D"]
+script = ExtResource("1_0y300")
+
+[node name="bg" type="Sprite2D" parent="."]
+position = Vector2(578, 325.5)
+scale = Vector2(1.05273, 0.725556)
+texture = ExtResource("2_g33ej")
+metadata/_edit_lock_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 302.0
+offset_top = 547.0
+offset_right = 765.0
+offset_bottom = 644.0
+scale = Vector2(1.11977, 0.959916)
+
+[node name="atkButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "                  "
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/atkButton"]
+position = Vector2(42.5001, 49)
+scale = Vector2(0.2025, 0.24)
+texture = ExtResource("3_xlpmp")
+
+[node name="defButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "                  "
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/defButton"]
+position = Vector2(42.5001, 49)
+scale = Vector2(0.2025, 0.24)
+texture = ExtResource("4_gtnnp")
+
+[node name="spcButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "                  "
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/spcButton"]
+position = Vector2(42.5001, 49)
+scale = Vector2(0.2025, 0.24)
+texture = ExtResource("5_vtq0p")
+
+[node name="chgButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "                  "
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/chgButton"]
+position = Vector2(42.5001, 49)
+scale = Vector2(0.2025, 0.24)
+texture = ExtResource("6_dct41")
+
+[node name="goButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "                  "
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/goButton"]
+position = Vector2(42.5001, 49)
+scale = Vector2(0.2025, 0.24)
+texture = ExtResource("7_au035")
+
+[node name="playerSprite" type="Sprite2D" parent="."]
+position = Vector2(220, 337)
+
+[node name="enemySprite" type="Sprite2D" parent="."]
+position = Vector2(839, 311)
+flip_h = true
+
+[node name="PlayerHealthBar" type="ProgressBar" parent="."]
+offset_left = 79.0
+offset_top = 531.0
+offset_right = 297.0
+offset_bottom = 558.0
+theme_override_styles/background = SubResource("StyleBoxFlat_lxf1f")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ftye3")
+value = 100.0
+show_percentage = false
+
+[node name="EnemyHealthBar" type="ProgressBar" parent="."]
+offset_left = 795.0
+offset_top = 518.0
+offset_right = 1013.0
+offset_bottom = 545.0
+theme_override_styles/background = SubResource("StyleBoxFlat_lxf1f")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ftye3")
+value = 100.0
+show_percentage = false
+
+[node name="pDebug" type="Label" parent="."]
+offset_left = 15.0
+offset_top = 10.0
+offset_right = 140.0
+offset_bottom = 65.0
+text = "[]"
+label_settings = SubResource("LabelSettings_xfw2m")
+
+[node name="eDebug" type="Label" parent="."]
+offset_left = 698.0
+offset_top = 18.0
+offset_right = 823.0
+offset_bottom = 73.0
+text = "[]"
+label_settings = SubResource("LabelSettings_xfw2m")
+
+[node name="bgMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_xre52")
+autoplay = true
+
+[connection signal="pressed" from="HBoxContainer/atkButton" to="." method="_on_atk_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/defButton" to="." method="_on_def_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/spcButton" to="." method="_on_spc_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/chgButton" to="." method="_on_chg_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/goButton" to="." method="_on_go_button_pressed"]

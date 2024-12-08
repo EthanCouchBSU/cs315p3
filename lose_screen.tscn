@@ -1,0 +1,93 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfdsjrpsa2odu"]
+
+[ext_resource type="Script" path="res://lose_screen.gd" id="1_idj1v"]
+[ext_resource type="LabelSettings" uid="uid://drwis0trstewa" path="res://screen.tres" id="2_4mvep"]
+[ext_resource type="LabelSettings" uid="uid://cfnklpbe13q43" path="res://other/button.tres" id="3_2dclf"]
+
+[node name="lose_screen" type="Node2D"]
+script = ExtResource("1_idj1v")
+
+[node name="Outline" type="ColorRect" parent="."]
+z_index = 2
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(20.186, 11.0233)
+mouse_filter = 1
+color = Color(0, 0, 0, 1)
+
+[node name="Inline" type="ColorRect" parent="."]
+z_index = 2
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 49.0
+offset_bottom = 48.0
+scale = Vector2(20.186, 11.0233)
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="."]
+z_index = 3
+offset_left = 68.0
+offset_top = 36.0
+offset_right = 872.0
+offset_bottom = 296.0
+text = "You Lost!"
+label_settings = ExtResource("2_4mvep")
+
+[node name="ExitButton" type="Button" parent="."]
+z_index = 2
+offset_left = 326.0
+offset_top = 299.0
+offset_right = 467.0
+offset_bottom = 353.0
+text = "
+                                "
+flat = true
+
+[node name="ColorRect" type="ColorRect" parent="ExitButton"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(3.56, 1.36)
+mouse_filter = 2
+color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="Label" type="Label" parent="ExitButton"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = -7.0
+offset_right = 114.0
+offset_bottom = 62.0
+text = "EXIT"
+label_settings = ExtResource("3_2dclf")
+
+[node name="WickedLazyFix" type="ColorRect" parent="."]
+offset_left = -219.0
+offset_top = -125.0
+offset_right = -203.0
+offset_bottom = -61.0
+scale = Vector2(13.54, 9.0985)
+mouse_filter = 1
+color = Color(1, 1, 1, 0)
+
+[node name="WickedLazyFix2" type="ColorRect" parent="."]
+offset_left = 802.0
+offset_top = -77.0
+offset_right = 818.0
+offset_bottom = -13.0
+scale = Vector2(13.54, 9.0985)
+mouse_filter = 1
+color = Color(1, 1, 1, 0)
+
+[node name="WickedLazyFix3" type="ColorRect" parent="."]
+offset_left = 675.0
+offset_top = 390.0
+offset_right = 691.0
+offset_bottom = 454.0
+rotation = 1.57205
+scale = Vector2(13.54, 9.0985)
+mouse_filter = 1
+color = Color(1, 1, 1, 0)
+
+[connection signal="mouse_entered" from="ExitButton" to="." method="_on_exit_button_mouse_entered"]
+[connection signal="mouse_exited" from="ExitButton" to="." method="_on_exit_button_mouse_exited"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

@@ -1,0 +1,28 @@
+{
+	"Monster": {
+		"Racoon": {
+			"atk": 2,
+			"spd": 2,
+			"spc": 2,
+			"hp": 6,
+			"def":0,
+			"sprite":"res://assets/racoon.png"
+		},
+		"Dog": {
+			"atk": 4,
+			"spd": 3,
+			"spc": 1,
+			"hp": 4,
+			"def":0,
+			"sprite":"res://assets/dog.png"
+		},
+		"Squirrel": {
+			"atk": 1,
+			"spd": 1,
+			"spc": 2,
+			"hp": 7,
+			"def":1,
+			"sprite":"res://assets/squirrel.png"
+		}
+	}
+}

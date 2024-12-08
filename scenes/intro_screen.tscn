@@ -1,0 +1,202 @@
+[gd_scene load_steps=10 format=3 uid="uid://b2yp8trngiq82"]
+
+[ext_resource type="Script" path="res://scripts/intro_screen.gd" id="1_kxpv7"]
+[ext_resource type="LabelSettings" uid="uid://cfnklpbe13q43" path="res://other/button.tres" id="2_5c4iq"]
+[ext_resource type="Texture2D" uid="uid://dnl5qf0nkhk1x" path="res://assets/car.png" id="2_g4l5g"]
+[ext_resource type="Texture2D" uid="uid://bpx74m30bym4w" path="res://assets/titlescreenbg.png" id="3_ljtcu"]
+[ext_resource type="AudioStream" uid="uid://33f88wgp5m8o" path="res://assets/inspirational-uplifting-calm-piano-254764.mp3" id="5_icv1b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ej35i"]
+font_size = 100
+font_color = Color(0.77, 0.077, 0.077, 1)
+shadow_size = 6
+shadow_color = Color(0, 0, 0, 0.407843)
+shadow_offset = Vector2(3, 1)
+
+[sub_resource type="Animation" id="Animation_ijoi2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(486, 37)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("title text:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_c7n5g"]
+resource_name = "title"
+length = 0.43
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(486, 37), Vector2(489, 20), Vector2(486, 37)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("title text:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0262222, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qgybt"]
+_data = {
+"RESET": SubResource("Animation_ijoi2"),
+"title": SubResource("Animation_c7n5g")
+}
+
+[node name="IntroScreen" type="Node2D"]
+position = Vector2(374, 367)
+script = ExtResource("1_kxpv7")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_left = -250.0
+offset_top = -228.0
+offset_right = 108.0
+offset_bottom = -58.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "
+
+"
+flat = true
+
+[node name="PlayButtonColor" type="ColorRect" parent="MarginContainer/VBoxContainer/PlayButton"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(8.96, 1.36)
+mouse_filter = 2
+color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PlayButton"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = -8.0
+offset_right = 318.0
+offset_bottom = 61.0
+text = "NEW GAME"
+label_settings = ExtResource("2_5c4iq")
+
+[node name="CreditButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "
+
+"
+flat = true
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/CreditButton"]
+z_index = 1
+layout_mode = 0
+offset_left = 71.0
+offset_top = -9.0
+offset_right = 342.0
+offset_bottom = 60.0
+text = "CREDITS"
+label_settings = ExtResource("2_5c4iq")
+
+[node name="CreditButtonColor" type="ColorRect" parent="MarginContainer/VBoxContainer/CreditButton"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(8.96, 1.36)
+mouse_filter = 2
+color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "
+
+"
+flat = true
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/QuitButton"]
+z_index = 1
+layout_mode = 0
+offset_left = 115.0
+offset_top = -11.0
+offset_right = 386.0
+offset_bottom = 58.0
+scale = Vector2(1.00791, 0.99644)
+text = "EXIT"
+label_settings = ExtResource("2_5c4iq")
+
+[node name="QuitButtonColor" type="ColorRect" parent="MarginContainer/VBoxContainer/QuitButton"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(8.96, 1.36)
+mouse_filter = 2
+color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="title text" type="Label" parent="."]
+offset_left = -368.0
+offset_top = -365.0
+offset_right = 228.0
+offset_bottom = -228.0
+text = "Road Killers!"
+label_settings = SubResource("LabelSettings_ej35i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(486, 37)
+texture = ExtResource("2_g4l5g")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qgybt")
+}
+autoplay = "title"
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = -4
+position = Vector2(203, -43)
+texture = ExtResource("3_ljtcu")
+metadata/_edit_lock_ = true
+
+[node name="bgMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_icv1b")
+autoplay = true
+
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/CreditButton" to="." method="_on_credit_button_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VBoxContainer/CreditButton" to="." method="_on_credit_button_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CreditButton" to="." method="_on_credit_button_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
