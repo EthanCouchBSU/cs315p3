@@ -118,7 +118,7 @@ func _on_spc_button_pressed() -> void:
 
 func _on_chg_button_pressed() -> void:
 	addToCommand("chg")
-#proccess commands
+#proccess commands get the list of commands, who it is targetting, and the action to be proccesed
 func procCommand(commandList,target,i):
 	
 		match commandList[i]:
@@ -162,6 +162,7 @@ func _on_go_button_pressed() -> void:
 	if ( pCommands.size() < 3):
 		debugLabel.text = "You need 3 inputs"
 	else:
+#fill enemy commands
 		for i in range(3):
 			if eCommands.size() < 3:
 				pickEnemyCommand()
@@ -169,6 +170,7 @@ func _on_go_button_pressed() -> void:
 				eCommands.clear()
 				pickEnemyCommand()
 		eDebugLabel.text = str(eCommands)
+#process player, then enemy commands
 		for i in range(3):
 			procCommand(pCommands,"p",i)
 			procCommand(eCommands,"e",i)
