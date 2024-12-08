@@ -14,6 +14,7 @@ func reset():
 	playerMonster = null
 func increaseLevel():
 	levelProgress +=1
+#player monster funcs
 func setPlayerMonster(monsterIn):
 	playerMonster = monsterData["Monster"][monsterIn]
 
@@ -36,7 +37,7 @@ func setEnemyMonsterToRand(roll):
 			enemyMonster = monsterData["Monster"]["Squirrel"]
 func chooseRandomMonster():
 	pass
-
+#loading json file in gdscript, from godot documentation
 func loadJsonFile(file):
 	if FileAccess.file_exists(file):
 		var fileData = FileAccess.open(file, FileAccess.READ)
